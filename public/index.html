@@ -9,23 +9,14 @@
     
 </head>
 <body>
-  <div x-data="{ quote: '', loading: true }" 
-    x-init="fetch('https://type.fit/api/quotes')
-            .then(response => response.json())
-            .then(data => {
-              const randomIndex = Math.floor(Math.random() * data.length); // Get a random index
-              quote = data[randomIndex]; // Set the quote to the random one
-              loading = false; // Set loading to false
-            })">
-    <h1>Random Quote</h1>
-      <div x-show="loading">Loading quote...</div>
-      <div x-show="!loading">
-      <div class="quote">
-        <p x-text="quote.text"></p>
-        <p><strong x-text="quote.author.slice(0, quote.author.length - 10) || 'Unknown'"></strong></p>
-      </div>
+  <div class="h-screen flex items-center justify-center flex-col">
+    <div class="quote">
+      <p id="quote-text">Loading quote...</p>
+      <img id="quote-image" src="" alt="Random Image" style="display: none;">
     </div>
+    <button id="new-quote-button">Get New Quote</button>
   </div>
+  <script src="script.js" defer></script>
 
 </body>
 </html>
